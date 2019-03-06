@@ -1,4 +1,4 @@
-FROM ruby:2.2.8-stretch
+FROM ruby:2.2.8
 
 COPY . /srv
 
