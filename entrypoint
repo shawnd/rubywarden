@@ -1,0 +1,25 @@
+#!/bin/bash
+# $0 is a script name,
+# $1, $2, $3 etc are passed arguments
+# $1 is our command
+CMD=$1
+
+case "$CMD" in
+  'run' )
+    sudo -u _rubywarden env RUBYWARDEN_ENV=production bundle exec rackup -p 4567 config.ru
+    ;;
+
+  'test' )
+    bundle exec rake test
+    ;;
+
+  'migrate' )
+    bundle exec rake db:migrate
+    ;;
+
+   * )
+    # Run custom command. Thanks to this line we can still use
+    # "docker run our_image /bin/sh" and it will work
+    exec "$@"
+    ;;
+esac
