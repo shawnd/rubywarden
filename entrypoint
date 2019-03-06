@@ -6,7 +6,7 @@ CMD=$1
 
 case "$CMD" in
   'run' )
-    sudo -u _rubywarden env RUBYWARDEN_ENV=production bundle exec rackup -p 4567 config.ru
+    bundle exec rackup -p 4567 config.ru
     ;;
 
   'test' )
